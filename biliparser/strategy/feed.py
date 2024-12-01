@@ -93,7 +93,7 @@ class Feed(ABC):
             if top:
                 for item in top.values():
                     if item:
-                        comment += f'🔝> @{item["member"]["uname"]}:\n{item["content"]["message"]}\n'
+                        comment += f'▎ @{item["member"]["uname"]}:\n{item["content"]["message"]}\n'
         return self.shrink_line(comment)
 
     @cached_property
@@ -104,8 +104,8 @@ class Feed(ABC):
             if top:
                 for item in top.values():
                     if item:
-                        comment_markdown += f'🔝\\> {self.make_user_markdown(item["member"]["uname"], item["member"]["mid"])}:\n{escape_markdown(item["content"]["message"])}\n'
-        return self.shrink_line(comment_markdown)
+                        comment_markdown += f'▎ {self.make_user_markdown(item["member"]["uname"], item["member"]["mid"])}:\n{escape_markdown(item["content"]["message"])}\n'
+        return self.shrink_line(comment_markdown)▎
 
     @property
     def mediaurls(self):
@@ -150,7 +150,7 @@ class Feed(ABC):
             return prev_caption
         prev_caption = caption
         if self.comment_markdown:
-            caption += "〰〰〰〰〰〰〰〰〰〰\n" + (
+            caption += "\n" + (
                 self.clean_cn_tag_style(self.comment_markdown)
             )
         if len(caption) > MessageLimit.CAPTION_LENGTH:
