@@ -80,7 +80,7 @@ class Feed(ABC):
     def content_markdown(self):
         content_markdown = escape_markdown(self.content)
         if not content_markdown.endswith("\n"):
-            content_markdown += "\n"
+            content_markdown += "\n\n"
         # if self.extra_markdown:
         #     content_markdown += self.extra_markdown
         return self.shrink_line(content_markdown)
@@ -93,7 +93,7 @@ class Feed(ABC):
             if top:
                 for item in top.values():
                     if item:
-                        comment += f'▎ @{item["member"]["uname"]}:\n{item["content"]["message"]}\n'
+                        comment += f'▎@{item["member"]["uname"]}:\n{item["content"]["message"]}\n'
         return self.shrink_line(comment)
 
     @cached_property
@@ -104,7 +104,7 @@ class Feed(ABC):
             if top:
                 for item in top.values():
                     if item:
-                        comment_markdown += f'▎ {self.make_user_markdown(item["member"]["uname"], item["member"]["mid"])}:\n{escape_markdown(item["content"]["message"])}\n'
+                        comment_markdown += f'▎{self.make_user_markdown(item["member"]["uname"], item["member"]["mid"])}:\n{escape_markdown(item["content"]["message"])}\n'
         return self.shrink_line(comment_markdown)
 
     @property
