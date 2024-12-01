@@ -137,9 +137,9 @@ class Feed(ABC):
     @cached_property
     def caption(self):
         caption = (
-            '*' + escape_markdown(self.url) + '*'
-            if not self.extra_markdown
-            else self.extra_markdown + "\n"
+            escape_markdown(self.url)
+            if not "*" + self.extra_markdown + "*\n"
+            else "*" + self.extra_markdown + "*\n\n"
         )  # I don't need url twice with extra_markdown
         if self.user:
             caption += self.user_markdown + ":\n"
