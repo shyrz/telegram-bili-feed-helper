@@ -74,7 +74,7 @@ def origin_link(content: str) -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton(text="原链接", url=content),
+                InlineKeyboardButton(text="Bilibili", url=content),
             ]
         ]
     )
