@@ -105,7 +105,7 @@ class Feed(ABC):
                 for item in top.values():
                     if item:
                         comment_markdown += f'▎ {self.make_user_markdown(item["member"]["uname"], item["member"]["mid"])}:\n{escape_markdown(item["content"]["message"])}\n'
-        return self.shrink_line(comment_markdown)▎
+        return self.shrink_line(comment_markdown)
 
     @property
     def mediaurls(self):
