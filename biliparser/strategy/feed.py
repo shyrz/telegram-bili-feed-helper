@@ -80,7 +80,7 @@ class Feed(ABC):
     def content_markdown(self):
         content_markdown = escape_markdown(self.content)
         if not content_markdown.endswith("\n"):
-            content_markdown += "\n\n"
+            content_markdown += "\n"
         # if self.extra_markdown:
         #     content_markdown += self.extra_markdown
         return self.shrink_line(content_markdown)
@@ -137,7 +137,7 @@ class Feed(ABC):
     @cached_property
     def caption(self):
         caption = (
-            escape_markdown(self.url)
+            '*' + escape_markdown(self.url) + '*'
             if not self.extra_markdown
             else self.extra_markdown + "\n"
         )  # I don't need url twice with extra_markdown
